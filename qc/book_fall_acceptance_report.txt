@@ -1,0 +1,19 @@
+phys { VX: 520, V0: 1180, DEC: 2200, G: 1900, DRAG: 1.4, OMEGA: 7.5 } edge t= 11.960
+f280 t=11.67 slide x=553 y=1279 rot=0.00 L=488 R=618 top=1248 bot=1310 r=1.000
+f284 t=11.83 slide x=716 y=1279 rot=0.00 L=651 R=781 top=1248 bot=1310 r=1.000
+f288 t=12.00 air x=820 y=1281 rot=0.30 L=742 R=899 top=1208 bot=1353 r=1.000
+f292 t=12.17 air x=893 y=1320 rot=1.55 L=801 R=986 top=1253 bot=1386 r=1.000
+f300 t=12.50 air x=941 y=1390 rot=2.56 L=837 R=1045 top=1278 bot=1501 r=0.020
+f312 t=13.00 air x=942 y=1392 rot=2.59 L=839 R=1045 top=1281 bot=1504 r=0.007
+f336 t=14.00 air x=945 y=1397 rot=2.64 L=844 R=1045 top=1286 bot=1508 r=0.007
+f360 t=15.00 air x=947 y=1402 rot=2.70 L=849 R=1045 top=1292 bot=1512 r=0.007
+f384 t=16.00 air x=949 y=1407 rot=2.75 L=854 R=1044 top=1298 bot=1516 r=0.007
+f408 t=17.00 air x=951 y=1411 rot=2.80 L=860 R=1043 top=1304 bot=1519 r=0.007
+f432 t=18.00 air x=953 y=1416 rot=2.85 L=865 R=1042 top=1311 bot=1522 r=0.007
+f444 t=18.50 air x=955 y=1419 rot=2.88 L=868 R=1041 top=1315 bot=1524 r=0.021
+f448 t=18.67 air x=957 y=1425 rot=2.94 L=875 R=1039 top=1322 bot=1527 r=0.067
+f452 t=18.83 air x=961 y=1436 rot=3.05 L=888 R=1034 top=1339 bot=1533 r=0.113
+f453 t=18.88 air x=962 y=1438 rot=3.07 L=891 R=1033 top=1343 bot=1534 r=0.120
+book completely clear of table (whole book past the table edge, airborne) at t= 12.25
+min gap above floor during fall: 26.3 px
+BOOK-FALL QC: PASS

@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>MOONBOY EP.01 renderer</title>
+<style>
+@font-face{font-family:"Titan One";src:url(../assets/fonts/TitanOne-Regular.ttf)}
+@font-face{font-family:Montserrat;src:url(../assets/fonts/Montserrat.ttf);font-weight:100 900}
+@font-face{font-family:"Noto Sans TC";src:url(../assets/fonts/NotoSansTC.ttf);font-weight:100 900}
+html,body{margin:0;background:#000}canvas{display:block}
+</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="../rig/moonboy_rig.js"></script>
+<script src="timeline.js"></script>
+<script src="episode.js"></script>
+<script>
+window.READY = (async () => {
+  const parts = await (await fetch('../assets/character/parts.json')).json();
+  await MB.load('../assets/character/', parts);
+  const info = await EP.init('../');
+  const ctx = document.getElementById('c').getContext('2d');
+  window.renderAt = (t) => { EP.draw(ctx, t); };
+  window.frameData = (t, type) => { EP.draw(ctx, t); return document.getElementById('c').toDataURL(type || 'image/png'); };
+  return info;
+})();
+</script></body></html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>MOONBOY EP.01 cover</title>
+<style>
+@font-face{font-family:"Titan One";src:url(../assets/fonts/TitanOne-Regular.ttf)}
+@font-face{font-family:Montserrat;src:url(../assets/fonts/Montserrat.ttf);font-weight:100 900}
+html,body{margin:0;background:#000}
+</style></head>
+<body>
+<script src="../rig/moonboy_rig.js"></script>
+<script src="../scenes/timeline.js"></script>
+<script src="../scenes/episode.js"></script>
+<script>
+/* Layered cover generator. Layers: 01_background, 02_accents, 03_character, 04_text.  Formats: reel 1080x1920, feed 1080x1350. */
+const FORMATS = {
+  reel: { w: 1080, h: 1920, cx: 505, cy: 1050, k: 1.78, title: 450, sub: 560, brand: 1668, safe: [285, 1635] },
+  feed: { w: 1080, h: 1350, cx: 540, cy: 735, k: 1.5, title: 175, sub: 275, brand: 1268, safe: [0, 1350] },
+};
+const IVORY = '#f5e4d5';
+function silver(g, y0, y1) { const s = g.createLinearGradient(0, y0, 0, y1); s.addColorStop(0, '#ffffff'); s.addColorStop(.45, '#c9c9d2'); s.addColorStop(.55, '#8d8d98'); s.addColorStop(1, '#f1f1f5'); return s; }
+function layerBackground(g, F) {
+  g.fillStyle = '#000'; g.fillRect(0, 0, F.w, F.h);
+  const r = g.createRadialGradient(F.cx, F.cy - 80 * F.k, 50, F.cx, F.cy, 620 * F.k / 1.6); r.addColorStop(0, 'rgba(255,246,232,.20)'); r.addColorStop(.6, 'rgba(255,246,232,.06)'); r.addColorStop(1, 'rgba(0,0,0,0)');
+  g.fillStyle = r; g.fillRect(0, 0, F.w, F.h);
+  // spotlight cone from above
+  const c = g.createLinearGradient(0, 0, 0, F.cy + 300 * F.k); c.addColorStop(0, 'rgba(255,248,236,.16)'); c.addColorStop(1, 'rgba(255,248,236,.02)');
+  g.fillStyle = c; g.beginPath(); g.moveTo(F.cx - 90, -10); g.lineTo(F.cx + 90, -10); g.lineTo(F.cx + 520, F.cy + 300 * F.k); g.lineTo(F.cx - 520, F.cy + 300 * F.k); g.closePath(); g.fill();
+  // studio shelves silhouettes (very subtle)
+  g.save(); g.globalAlpha = .35; g.strokeStyle = 'rgba(200,200,210,.5)'; g.lineWidth = 2;
+  const sy = F.cy - 40 * F.k; for (let i = 0; i < 6; i++) { const x = 40 + i * 180, hh = 90 + (i % 2) * 30; g.strokeRect(x, sy - hh, 70, hh); } g.fillStyle = 'rgba(200,200,210,.5)'; g.fillRect(0, sy, F.w, 2); g.restore();
+  const v = g.createRadialGradient(F.w / 2, F.h / 2, Math.min(F.w, F.h) * .45, F.w / 2, F.h / 2, Math.max(F.w, F.h) * .75); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.65)'); g.fillStyle = v; g.fillRect(0, 0, F.w, F.h);
+}
+function layerAccents(g, F) {   // premium silver orbit lines + sparkles (echoing the chrome ring and the 369° orbit)
+  g.save(); g.translate(F.cx, F.cy - 20 * F.k); g.rotate(-.18);
+  for (const [rx, ry, a] of [[470, 150, .55], [520, 175, .25]]) { g.strokeStyle = `rgba(230,230,238,${a})`; g.lineWidth = 2.5; g.beginPath(); g.ellipse(0, 0, rx * F.k / 1.6, ry * F.k / 1.6, 0, 0, 7); g.stroke(); }
+  g.restore();
+  const st = [[-.37, -.33, 26], [.4, -.2, 18], [.33, .26, 30], [-.42, .18, 14], [.12, -.42, 12]];
+  for (const [dx, dy, r] of st) { g.save(); g.globalCompositeOperation = 'lighter'; MB.star(g, F.cx + dx * F.w, F.cy + dy * F.w * F.k / 1.6, r, .2, .95); g.restore(); }
+}
+function layerCharacter(g, F) {
+  g.save(); g.translate(F.cx, F.cy); g.scale(F.k, F.k);
+  MB.shadow(g, 10, 292, 230, 1, 0);
+  const pose = { x: 0, y: 0, dir: -1, rot: 0, face: true,            // official proud face, official raised-fist pose
+    feet: { L: { x: -150, y: 262, rot: -.45, sole: true, bend: .25 }, R: { x: 52, y: 290 } },
+    hands: { L: { x: -188, y: -118, kind: 'fist', bend: -.35 }, R: { x: 196, y: 82, kind: 'glove', bend: .25 } },
+    between: null };
+  MB.draw(g, Object.assign({}, pose, { hands: { L: pose.hands.L } , between: null }));
+  // the protected collectible: sleeved manga tucked at his side, glove in front of it
+  g.save(); g.translate(236, 18); g.rotate(.13); EP.drawBook(g, 0, 0, 0, 1, { s: .82, shine: .35 }); EP.drawSleeve(g, 0, 0, .82, 0, .3); g.restore();
+  g.save(); g.globalCompositeOperation = 'lighter'; MB.star(g, 296, -70, 34, .3, 1); g.restore();
+  // right arm + glove drawn over the book (holding it)
+  MB.hose(g, -195 * MB.S * -1 + 0, 95 * MB.S, 196, 82, .25, 24); MB.sprite(g, 'glove', 196, 82, MB.S, -.15, true);
+  g.restore();
+}
+function layerText(g, F) {
+  g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  // MOONBOY (vintage cartoon letterforms) + chrome EP.01 badge
+  const T = 'MOONBOY', ts = 128; g.font = `400 ${ts}px "Titan One"`;
+  const tw = g.measureText(T).width, epW = 184, gap = 22, total = tw + gap + epW, x0 = F.w / 2 - total / 2;
+  g.textAlign = 'left';
+  g.lineWidth = 22; g.strokeStyle = '#000'; g.strokeText(T, x0, F.title);
+  g.lineWidth = 10; g.strokeStyle = silver(g, F.title - ts, F.title); g.strokeText(T, x0, F.title);
+  g.lineWidth = 5; g.strokeStyle = '#000'; g.strokeText(T, x0, F.title);
+  g.fillStyle = IVORY; g.fillText(T, x0, F.title);
+  const bx = x0 + tw + gap, by = F.title - ts * .74, bh = ts * .74;
+  g.fillStyle = silver(g, by, by + bh); roundRect(g, bx, by, epW, bh, bh / 2); g.fill(); g.lineWidth = 4; g.strokeStyle = '#000'; g.stroke();
+  g.fillStyle = '#0a0a0c'; g.font = `800 ${Math.round(bh * .56)}px Montserrat`; g.textAlign = 'center'; g.fillText('EP.01', bx + epW / 2, by + bh * .7);
+  // secondary title
+  g.font = '700 58px Montserrat'; g.letterSpacing = '3px';
+  g.lineWidth = 10; g.strokeStyle = '#000'; g.strokeText('First Day on the Job', F.w / 2, F.sub); g.fillStyle = '#ffffff'; g.fillText('First Day on the Job', F.w / 2, F.sub);
+  g.letterSpacing = '0px';
+  // brand line
+  g.font = '600 30px Montserrat'; g.letterSpacing = '9px'; g.fillStyle = 'rgba(232,232,238,.92)'; g.fillText('369° COLLECTIBLE', F.w / 2 + 4, F.brand);
+  g.fillStyle = 'rgba(220,220,228,.5)'; g.fillRect(F.w / 2 - 70, F.brand - 50, 140, 2); g.letterSpacing = '0px';
+}
+function roundRect(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+const LAYERS = { '01_background': layerBackground, '02_accents': layerAccents, '03_character': layerCharacter, '04_text': layerText };
+window.READY = (async () => {
+  const parts = await (await fetch('../assets/character/parts.json')).json(); await MB.load('../assets/character/', parts); await EP.init('../');
+  await document.fonts.load('400 100px "Titan One"'); await document.fonts.load('800 60px Montserrat');
+  return true;
+})();
+window.renderCover = (fmt, layers) => { const F = FORMATS[fmt], c = document.createElement('canvas'); c.width = F.w; c.height = F.h; const g = c.getContext('2d');
+  for (const n of layers) { g.save(); LAYERS[n](g, F); g.restore(); } return c.toDataURL('image/png'); };
+</script></body></html>
