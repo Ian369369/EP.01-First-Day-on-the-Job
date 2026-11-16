@@ -1,0 +1,35 @@
+{
+ "engine": "Kokoro-82M v1.0 (local, onnx)",
+ "voice": "am_puck",
+ "pitch_semitones": 3.2,
+ "lines": {
+  "01_hey": {
+   "text": "Hey! Name's Moonboy!",
+   "dur": 1.041
+  },
+  "02_firstday": {
+   "text": "First day! Easy peasy!",
+   "dur": 1.395
+  },
+  "03a_ah": {
+   "text": "Ah... Aah...",
+   "dur": 1.047
+  },
+  "03b_achoo": {
+   "text": "Ah-choo!",
+   "dur": 0.744
+  },
+  "04_watch": {
+   "text": "Not on my watch!",
+   "dur": 1.196
+  },
+  "05_gotcha": {
+   "text": "Gotcha!",
+   "dur": 0.742
+  },
+  "06_phew": {
+   "text": "Phew... Not a scratch!",
+   "dur": 1.225
+  }
+ }
+}
