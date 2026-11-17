@@ -1,0 +1,35 @@
+{
+  "id": "ep01",
+  "title": "MOONBOY EP.01 — First Day on the Job",
+  "format": {"aspect": "9:16", "width": 1080, "height": 1920, "fps": 24, "target_seconds": 30},
+  "language": {"voice": "en-US", "subtitles": "zh-TW"},
+  "style": "Vintage 1930s rubber-hose 2D cartoon, grayscale black-and-silver collector studio, spotlight (match studio/reference/moonboy_reference_v1.mp4)",
+  "props": {
+    "graded_card": "A graded trading card in a clear plastic slab with a red top label reading 'GEM MINT 10' (PSA-10 style); original card art: a little rocket orbiting a crescent moon. No real brand logos."
+  },
+  "shots": [
+    {"id": "sh1", "scene": "Introduction", "dur": 7, "lines": [
+      {"id": "l1_hey", "en": "Hey, I'm Moonboy!", "zh": "嘿，我是 MOONBOY！"},
+      {"id": "l2_firstday", "en": "First day on the job? Easy peasy!", "zh": "第一天上班？小菜一碟！"}],
+     "action": "Confident greeting to camera under the spotlight, cheerful wave, then a cocky shrug and grin."},
+    {"id": "sh2", "scene": "The Collectible", "dur": 4, "lines": [
+      {"id": "l3_beauty", "en": "Ooh! What a beauty!", "zh": "哇！真是個美人兒！"}],
+     "action": "He spots the PSA-10 graded card on a small black display table and leans in close, eyes sparkling."},
+    {"id": "sh3", "scene": "The Sneeze", "dur": 5, "lines": [
+      {"id": "l4_sneeze", "en": "Ah... Ahh... ACHOO!", "zh": "哈…哈…哈啾！"}],
+     "action": "Nose tickles, he tries to hold it in (two building inhales), then a huge cartoon sneeze; the blast makes the card slab slide off the table edge and fall.",
+     "must": ["real sneeze, not blowing", "card leaves the table because of the sneeze"]},
+    {"id": "sh4", "scene": "The Rescue", "dur": 4, "lines": [
+      {"id": "l5_watch", "en": "Not on my watch!", "zh": "有我在，休想！"}],
+     "action": "Panic, then instant serious face; classic rubber-hose dash toward the falling card."},
+    {"id": "sh5", "scene": "The Catch", "dur": 7, "lines": [
+      {"id": "l6_gotcha", "en": "Gotcha!", "zh": "接到了！"},
+      {"id": "l7_phew", "en": "Phew... Not a scratch.", "zh": "呼……毫髮無傷。"}],
+     "action": "Catches the card just before it hits the floor, then carefully inspects it and sighs with relief.",
+     "must": ["card never touches the floor"]},
+    {"id": "sh6", "scene": "Ending", "dur": 4, "lines": [],
+     "action": "Proud, smug grin and wink to camera."},
+    {"id": "endcard", "scene": "Brand outro", "dur": 3.5, "local": true,
+     "action": "Fade to black; official 369° Collectible logo (unaltered file) + 'BEYOND THE COLLECTION.'"}
+  ]
+}

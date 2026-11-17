@@ -1,0 +1,62 @@
+{
+ "studio/episodes/ep01/approved/sh1_vc.wav": {
+  "dur": 7.0356875,
+  "text": "Hey, I'm moon boy first day on the job easy peasy",
+  "f0": [
+   293.44129382549477,
+   232.6439759314725,
+   374.0087195395986
+  ],
+  "speaker_sim": 0.566857099533081
+ },
+ "studio/episodes/ep01/approved/sh2_vc.wav": {
+  "dur": 4.0403125,
+  "text": "Ooh, what a beauty.",
+  "f0": [
+   158.16224325646337,
+   90.84035432567019,
+   255.45548363412797
+  ],
+  "speaker_sim": 0.4217928946018219
+ },
+ "studio/episodes/ep01/approved/sh3_vc.wav": {
+  "dur": 6.03725,
+  "text": "Ugh. Achoo!",
+  "f0": [
+   246.75373206527053,
+   80.0,
+   261.42647251857596
+  ],
+  "speaker_sim": 0.28013309836387634
+ },
+ "studio/episodes/ep01/approved/sh4_vc.wav": {
+  "dur": 5.03875,
+  "text": "not on my watch got ya",
+  "f0": [
+   194.72381060191583,
+   170.2014847116364,
+   255.89943520277373
+  ],
+  "speaker_sim": 0.6764352321624756
+ },
+ "studio/episodes/ep01/takes/sh2_take1.wav": {
+  "dur": 4.096,
+  "text": "Ooh, what a beauty.",
+  "f0": [
+   303.80975067554357,
+   107.97736291386609,
+   670.2682386052013
+  ],
+  "speaker_sim": 0.47080346941947937
+ },
+ "studio/episodes/ep01/takes/sh4_take2.wav": {
+  "dur": 5.088,
+  "text": "Not on my watch. Gotcha!",
+  "f0": [
+   256.9353221962805,
+   214.93603953904898,
+   338.83292432603184
+  ],
+  "speaker_sim": 0.6534823775291443
+ }
+}

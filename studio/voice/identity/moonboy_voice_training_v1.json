@@ -1,0 +1,12 @@
+{
+ "sources": [
+  "studio/voice/reference_stems/moonboy_voice_ref_clip.wav",
+  "studio/voice/candidates/ep01/l1_hey_b.wav",
+  "studio/voice/candidates/ep01/l3_beauty_a.wav",
+  "studio/voice/candidates/ep01/l5_watch_a.wav",
+  "studio/voice/candidates/ep01/l3_beauty_b.wav",
+  "studio/voice/candidates/ep01/l7_phew_b.wav",
+  "studio/voice/reference_stems/moonboy_voice_ref_clip.wav"
+ ],
+ "duration_s": 16.1
+}

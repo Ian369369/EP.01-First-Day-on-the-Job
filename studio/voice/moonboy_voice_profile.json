@@ -1,0 +1,66 @@
+{
+ "name": "MOONBOY Voice v2 (authentic)",
+ "status": "production",
+ "platform": "Higgsfield",
+ "voice_element": {
+  "voice_id": "b4584f89-4dd0-4eab-b47e-b199779231a5",
+  "voice_type": "element"
+ },
+ "primary_engine": {
+  "model": "seed_audio",
+  "params": {
+   "format": "wav",
+   "sample_rate": 48000
+  },
+  "why": "Higgsfield seed_audio + v2 element: sim 0.76-0.82 to the authentic voice."
+ },
+ "fallback_engines": [
+  "text2speech_v2/minimax (sim 0.53)",
+  "text2speech_v2/seed_speech (sim 0.49, most consistent 0.81)"
+ ],
+ "identity_source": {
+  "reference_videos": [
+   "studio/reference/moonboy_reference_v1.mp4 (Higgsfield media 5c00b0b9-4bf2-4985-94f7-d0dcfedcbb62)",
+   "studio/reference/moonboy_reference_v2.mp4 (Higgsfield media ee98951d-1ea2-46a5-bd02-6438df3f6a6a)"
+  ],
+  "separation": "Higgsfield separate_stems (htdemucs, mode two) in the Higgsfield sandbox",
+  "authentic_clip": "studio/voice/identity/authentic_voice_ref.mp3 (9.7 s, ONLY real MOONBOY speech: 'Uh-oh', 'Not on my watch!', 'Gotcha!', 'Safe and sound.', effort sound) — Higgsfield media 5cd7db21-913a-4e63-8f69-c5d7c8a097e1"
+ },
+ "acoustic_target": {
+  "median_f0_hz": [
+   200,
+   300
+  ],
+  "character": "young male cartoon, playful, vintage American cartoon delivery, clear US English"
+ },
+ "performance_rules": [
+  "Write the line exactly as spoken; punctuation drives delivery ('!' energy, '...' pauses, '?' lift).",
+  "Plain text prompts work best with the voice element; do not add stage directions to the text (they get spoken).",
+  "Non-verbal: sneeze = 'Ah... Ahh... ACHOO!' with the approved sneeze take as @Audio 2 performance reference (job f1ea6508-377f-4fc5-8b87-c30265001c1c or studio/voice/library/sneeze_ref.wav).",
+  "Generate >=2 takes per line, auto-select with studio/tools/voice_qc.py (correct transcript AND F0 in target AND highest similarity)."
+ ],
+ "qc_tools": [
+  "studio/tools/voice_qc.py",
+  "studio/tools/voice_consistency.py",
+  "studio/tools/sneeze_check.py"
+ ],
+ "cost_reference_credits": {
+  "seed_audio_line": "0.1-1.3",
+  "voice_element_clone": 40
+ },
+ "validation_2026_11_17": {
+  "seed_audio+v2 ECAPA sim to authentic": [
+   0.756,
+   0.824
+  ],
+  "take_to_take": 0.77,
+  "old v1 sim": 0.32
+ },
+ "deprecated": {
+  "MOONBOY Voice v1": {
+   "voice_id": "11c4d894-6687-4857-b84a-328b66f6d313",
+   "reason": "Built partly from AI takes at ~420 Hz due to a pitch-estimation error (music bleed in a local stem). Do not use."
+  }
+ },
+ "lip_sync_pipeline": "Generate the talking shot in Higgsfield video (model speaks the line with generate_audio=true, dialogue/voice reference as audio_references) -> Higgsfield voice_change with the v2 element (keeps timing: envelope corr 0.96 in test) -> lips stay in sync with the MOONBOY voice."
+}
